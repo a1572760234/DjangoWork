@@ -16,6 +16,9 @@ class BookInfo(models.Model):
     commentcount = models.IntegerField(default=0)
     is_delete = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         db_table = 'bookinfo'   #修改表名
         verbose_name = '书籍管理' #通过admin站点使用
@@ -37,4 +40,6 @@ class PeopleInfo(models.Model):
     #从表数据根据主表而变化,主表删除一条数据,从表的数据,
     #,
     book = models.ForeignKey(BookInfo,on_delete=models.CASCADE)
-
+    class Meta:
+        db_table = 'peopleinfo'   #修改表名
+        verbose_name = '人物管理' #通过admin站点使用
