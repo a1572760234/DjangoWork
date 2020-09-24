@@ -54,3 +54,45 @@ BookInfo.objects.all().count()
 # get过滤单一结果
 # book = BookInfo.objects.filter(id__contains
 BookInfo.objects.filter(readcount__gt=20).filter(id__lt=3)
+
+
+##############聚合函数和排序函数
+from django.db.models import Sum,Max,Min,Avg,Count
+
+#模型类名.objects.aggregate(聚合函数('属性名'))
+BookInfo.objects.aggregate(Sum('readcount'))
+
+#升序查询
+BookInfo.objects.order_by('readcount')
+
+#降序查询
+BookInfo.objects.order_by('readcount')
+
+#两个表的级联操作
+#查询书籍为1的所有人物信息
+book = BookInfo.objects.get(id=1)
+
+
+book.peopleinfo_set.all()
+
+
+#查询人物为1的书籍信息
+person = PeopleInfo.objects.get(id=6)
+person.book
+person.book.name
+
+#查询图书，要求图书人物为郭靖
+#语法：
+#查询1的数据，条件为n
+#模型类名.object(关联模型类名小写__字段名__运算符=值)
+BookInfo.objects.filter(peopleinfo__name__exact='郭靖')
+BookInfo.objects.filter(peopleinfo__name='郭靖')
+
+#查询图书，要求图书中人物的描述包含‘八’
+BookInfo.objects.filter(peopleinfo__description__contains='八')
+
+#查询书名为‘天龙八部’的所有人物
+PeopleInfo.objects.filter(book__name__exact='天龙八部')
+#查询图书阅读量大于30的所有人物
+
+PeopleInfo.objects.filter(book__readcount__gt=30)
