@@ -13,6 +13,7 @@ class BookInfo(models.Model):
     class Meta:
         db_table='bookinfo' #设置表名
         verbose_name = '图书' #设置显示信息,in admin
+        verbose_name_plural = verbose_name
 
     # 设置返回信息
     def __str__(self):
@@ -35,6 +36,7 @@ class PeopleInfo(models.Model):
     class Meta:
         db_table = 'peopleinfo'
         verbose_name='人物信息'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return  self.name
