@@ -3,5 +3,6 @@ from myapp import views
 
 urlpatterns = [
     path('index/',views.index),
-    path('<request1_id>/<request2_id>',views.userRequest)
+    path('<request1_id>/<request2_id>',views.userRequest),
+    path('cookie/',views.cookie),
 ]
