@@ -76,8 +76,15 @@ WSGI_APPLICATION = 'django04_MVT.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'USER' : 'root',
+        'PASSWORD' : 'root',
+        'NAME' : 'django_book_py42',
+        'PORT' : 3306,
+        'HOST' : 'localhost'
+
     }
 }
 
