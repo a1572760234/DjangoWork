@@ -4,7 +4,7 @@ from django.db import models
 class BookInfo(models.Model):
     #定义bookinfo表字段
     name = models.CharField(max_length=20,verbose_name='名称')
-    pub_data = models.DateField(verbose_name='发布日期',null=True)
+    pub_date = models.DateField(verbose_name='发布日期',null=True)
     readcount = models.IntegerField(default=0,verbose_name='阅读量')
     commentcount = models.IntegerField(default=0,verbose_name='评论量')
     is_delete = models.BooleanField(default=False,verbose_name='是否逻辑删除')
